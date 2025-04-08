@@ -1,0 +1,10 @@
+Criar Personagem
+
+{
+"Nome":"Edu",
+"Nome Aventureiro":"EduAdventure",
+"Classe": "Guerreiro",
+"Level":10,
+Lista de Itens Mágicos;
+Força;
+Defesa;
