@@ -1,9 +1,12 @@
 package com.edu.EduAguiar.Controller;
 
-package com.edu.EduAguiar.Services.PersonagemService;
+import com.edu.EduAguiar.Model.Personagem;
+import com.edu.EduAguiar.Services.PersonagemService;
 import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -14,28 +17,23 @@ public class PersonagemController {
     private PersonagemService personagemService;
 
     @PostMapping
-    public Orcamento criarOrcamento(@RequestBody Orcamento orcamento){
-        return personagemService.insertOrcamento(orcamento);
+    public Personagem criarPersonagem(@RequestBody Personagem personagem){
+        return personagemService.insertPersonagem(personagem);
     }
 
     @GetMapping
-    public List<Orcamento> listarOrcamento(){
-        return personagemService.selectAllOrcamento();
-    }
-
-    @PutMapping("/{id}/aprovar")
-    public Orcamento aprovarOrcamento(@PathVariable int id){
-        return personagemService.aprovarOrcamento(id);
+    public List<Personagem> listarOrcamento(){
+        return personagemService.selectAllPersonagem();
     }
 
     @GetMapping("/{id}")
-    public Orcamento buscarById(@PathVariable int id){
-        return personagemService.selectOrcamentoById(id);
+    public Personagem buscarById(@PathVariable int id){
+        return personagemService.selectPersonagemById(id);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("deletar/{id}")
     public void deletar(@PathVariable int id){
-        personagemService.deletarOrcamento(id);
+        personagemService.deletarPersonagem(id);
     }
 
 }
