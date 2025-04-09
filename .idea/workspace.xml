@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01918ed4-8e2a-498c-89bc-22cdc9538b64" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/edu/EduAguiar/Repository/Item_MagicoRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/edu/EduAguiar/Controller/PersonagemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edu/EduAguiar/Controller/PersonagemController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/edu/EduAguiar/Model/Personagem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edu/EduAguiar/Model/Personagem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/edu/EduAguiar/Repository/PersonagemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edu/EduAguiar/Repository/PersonagemRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/edu/EduAguiar/Services/PersonagemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edu/EduAguiar/Services/PersonagemService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,6 +85,7 @@
       <workItem from="1744150857015" duration="2481000" />
       <workItem from="1744155537418" duration="216000" />
       <workItem from="1744156184231" duration="437000" />
+      <workItem from="1744156718660" duration="427000" />
     </task>
     <servers />
   </component>
