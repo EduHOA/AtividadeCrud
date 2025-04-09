@@ -1,11 +1,10 @@
-package com.edu.EduAguiar.Services;
+package com.edu.EduAguiar.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.edu.EduAguiar.Model.ItemMagico;
 import com.edu.EduAguiar.Repository.Item_MagicoRepository;
 
@@ -29,7 +28,7 @@ public class ItemMagicoService {
         if(oc.isPresent()){
             return oc.get();
         }else{
-            throw new RuntimeException("Personagem nao encotrado.");
+            throw new RuntimeException("Item nao encotrado.");
         }
     }
 

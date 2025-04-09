@@ -1,10 +1,8 @@
 package com.edu.EduAguiar.Controller;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import com.edu.EduAguiar.Model.ItemMagico;
-import com.edu.EduAguiar.Services.ItemMagicoService;
+import com.edu.EduAguiar.Service.ItemMagicoService;
 
 import java.util.List;
 
