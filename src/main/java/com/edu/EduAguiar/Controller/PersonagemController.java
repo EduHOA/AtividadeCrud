@@ -1,10 +1,13 @@
 package com.edu.EduAguiar.Controller;
-
+import com.edu.EduAguiar.Repository.Item_MagicoRepository;
+import com.edu.EduAguiar.Repository.PersonagemRepository;
+import com.edu.EduAguiar.Dto.NomeAventureiroDTO;
 import com.edu.EduAguiar.Dto.PersonagemDto;
 import com.edu.EduAguiar.Model.ItemMagico;
 import com.edu.EduAguiar.Model.Personagem;
 import com.edu.EduAguiar.Service.PersonagemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -16,14 +19,23 @@ public class PersonagemController {
     @Autowired
     private PersonagemService personagemService;
 
+    @Autowired
+    private PersonagemRepository personagemRepository;
+
+
     @PostMapping
     public Personagem criarPersonagem(@RequestBody Personagem personagem){
         return personagemService.insertPersonagem(personagem);
     }
 
-    @PutMapping("editar/{id}")
-    public Personagem editarPersonagem(@RequestBody Personagem personagem, @PathVariable int id){
-           return personagemService.atualizarPersonagem(id, personagem);
+    @PatchMapping("editar/{id}")
+    public ResponseEntity<Personagem> atualizarNomeAventureiro(
+            @PathVariable int id,
+            @RequestBody NomeAventureiroDTO dto) {
+
+        Personagem personagem = personagemService.selectPersonagemById(id);
+        personagem.setNome_aventureiro(dto.getNome_aventureiro());
+        return ResponseEntity.ok(personagemRepository.save(personagem));
     }
 
     @GetMapping
@@ -59,18 +71,16 @@ public class PersonagemController {
     }
 
     @PutMapping("/{idPersonagem}/item/{idItem}")
-    public ResponseEntity<Void> adicionarItemMagicoAoPersonagem(
+    public ResponseEntity<Void> adicionarItem(
             @PathVariable int idPersonagem,
             @PathVariable int idItem) {
-
-        personagemService.adicionarItemMagico(idPersonagem, idItem);
-        return ResponseEntity.ok().build();
+        personagemService.adicionarItemAoPersonagem(idPersonagem, idItem);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @GetMapping("/{id}/itens")
-    public ResponseEntity<List<ItemMagico>> listarItensPorPersonagem(@PathVariable int id) {
-        List<ItemMagico> itens = personagemService.listarItensPorPersonagem(id);
-        return ResponseEntity.ok(itens);
+    public ResponseEntity<List<ItemMagico>> listarItensDoPersonagem(@PathVariable int id) {
+        return ResponseEntity.ok(personagemService.listarItensPorPersonagem(id));
     }
 
     @DeleteMapping("/{idPersonagem}/itens/{idItem}")
@@ -81,8 +91,7 @@ public class PersonagemController {
 
     @GetMapping("/{id}/amuleto")
     public ResponseEntity<ItemMagico> buscarAmuleto(@PathVariable int id) {
-        ItemMagico amuleto = personagemService.buscarAmuleto(id);
-        return ResponseEntity.ok(amuleto);
+        return ResponseEntity.ok(personagemService.buscarAmuleto(id));
     }
 
 

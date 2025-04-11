@@ -1,5 +1,6 @@
 package com.edu.EduAguiar.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 
@@ -16,6 +17,7 @@ public class ItemMagico {
 
     @ManyToOne
     @JoinColumn(name = "personagem_id")
+    @JsonBackReference
     private Personagem personagem;
 
     public enum TipoItem { Arma, Armadura, Amuleto }
@@ -46,8 +48,6 @@ public class ItemMagico {
         if (tipo_item == TipoItem.Armadura && forca != 0) {
             throw new IllegalArgumentException("Armaduras devem ter força igual a zero.");
         }
-
-        // Amuleto pode ter os dois atributos, mas só um amuleto por personagem — validado em Personagem
     }
 
 
@@ -82,5 +82,17 @@ public class ItemMagico {
     public void setForca(int forca) {
         this.forca = forca;
     }
+
+    public Personagem getPersonagem() {
+        return personagem;
+    }
+
+    public void setPersonagem(Personagem personagem) {
+        this.personagem = personagem;
+    }
+
+
+
+
 }
 

@@ -67,34 +67,12 @@ public class PersonagemService {
     }
 
     @Transactional
-    public void adicionarItemMagico(int idPersonagem, int idItemMagico) {
+    public void adicionarItemAoPersonagem(int idPersonagem, int idItem) {
         Personagem personagem = personagemRepository.findById(idPersonagem)
-                .orElseThrow(() -> new EntityNotFoundException("Personagem não encontrado"));
+                .orElseThrow(() -> new RuntimeException("Personagem não encontrado"));
 
-        ItemMagico item = itemMagicoRepository.findById(idItemMagico)
-                .orElseThrow(() -> new EntityNotFoundException("Item mágico não encontrado"));
-
-        // Verifica se o item já está associado ao personagem
-        if (personagem.getItens_magicos().contains(item)) {
-            throw new IllegalArgumentException("Item mágico já está associado ao personagem");
-        }
-
-        // Regras do RPG
-        if (item.getForca() == 0 && item.getDefesa() == 0) {
-            throw new IllegalArgumentException("Item não pode ter força e defesa zeradas");
-        }
-
-        if (item.getForca() > 10 || item.getDefesa() > 10) {
-            throw new IllegalArgumentException("Item não pode ter mais de 10 pontos em força ou defesa");
-        }
-
-        if (item.getTipo_item() == ItemMagico.TipoItem.Amuleto) {
-            boolean jaTemAmuleto = personagem.getItens_magicos().stream()
-                    .anyMatch(i -> i.getTipo_item() == ItemMagico.TipoItem.Amuleto);
-            if (jaTemAmuleto) {
-                throw new IllegalArgumentException("Personagem já possui um amuleto");
-            }
-        }
+        ItemMagico item = itemMagicoRepository.findById(idItem)
+                .orElseThrow(() -> new RuntimeException("Item não encontrado"));
 
         if (item.getTipo_item() == ItemMagico.TipoItem.Arma && item.getDefesa() > 0) {
             throw new IllegalArgumentException("Armas não podem ter defesa");
@@ -104,14 +82,25 @@ public class PersonagemService {
             throw new IllegalArgumentException("Armaduras não podem ter força");
         }
 
+        if (item.getTipo_item() == ItemMagico.TipoItem.Amuleto) {
+            boolean jaTemAmuleto = personagem.getItens_magicos().stream()
+                    .anyMatch(i -> i.getTipo_item() == ItemMagico.TipoItem.Amuleto);
+            if (jaTemAmuleto) {
+                throw new IllegalArgumentException("Personagem já possui um amuleto.");
+            }
+        }
+
+        item.setPersonagem(personagem);
         personagem.getItens_magicos().add(item);
+        itemMagicoRepository.save(item);
         personagemRepository.save(personagem);
     }
 
     public List<ItemMagico> listarItensPorPersonagem(int idPersonagem) {
         Personagem personagem = personagemRepository.findById(idPersonagem)
-                .orElseThrow(() -> new EntityNotFoundException("Personagem não encontrado"));
-        return personagem.getItens_magicos(); // certifique-se de que não é null
+                .orElseThrow(() -> new RuntimeException("Personagem não encontrado"));
+
+        return personagem.getItens_magicos();
     }
 
     public void removerItemDoPersonagem(int idPersonagem, int idItem) {
@@ -127,12 +116,12 @@ public class PersonagemService {
 
     public ItemMagico buscarAmuleto(int idPersonagem) {
         Personagem personagem = personagemRepository.findById(idPersonagem)
-                .orElseThrow(() -> new EntityNotFoundException("Personagem não encontrado"));
+                .orElseThrow(() -> new RuntimeException("Personagem não encontrado"));
 
         return personagem.getItens_magicos().stream()
                 .filter(item -> item.getTipo_item() == ItemMagico.TipoItem.Amuleto)
                 .findFirst()
-                .orElseThrow(() -> new EntityNotFoundException("Amuleto não encontrado para este personagem"));
+                .orElseThrow(() -> new RuntimeException("Personagem não possui um amuleto."));
     }
 
 }

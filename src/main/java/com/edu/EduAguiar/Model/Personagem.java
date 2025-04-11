@@ -1,5 +1,6 @@
 package com.edu.EduAguiar.Model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class Personagem {
     private String nome_aventureiro;
 
     @OneToMany(mappedBy = "personagem", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<ItemMagico> itens_magicos = new ArrayList<>();
 
     public enum classe {Guerreiro,Mago,Arqueiro,Ladino,Bardo }
