@@ -108,7 +108,32 @@ public class PersonagemService {
         personagemRepository.save(personagem);
     }
 
+    public List<ItemMagico> listarItensPorPersonagem(int idPersonagem) {
+        Personagem personagem = personagemRepository.findById(idPersonagem)
+                .orElseThrow(() -> new EntityNotFoundException("Personagem não encontrado"));
+        return personagem.getItens_magicos(); // certifique-se de que não é null
+    }
 
+    public void removerItemDoPersonagem(int idPersonagem, int idItem) {
+        Personagem personagem = personagemRepository.findById(idPersonagem)
+                .orElseThrow(() -> new EntityNotFoundException("Personagem não encontrado"));
+
+        ItemMagico item = itemMagicoRepository.findById(idItem)
+                .orElseThrow(() -> new EntityNotFoundException("Item mágico não encontrado"));
+
+        personagem.getItens_magicos().remove(item);
+        personagemRepository.save(personagem);
+    }
+
+    public ItemMagico buscarAmuleto(int idPersonagem) {
+        Personagem personagem = personagemRepository.findById(idPersonagem)
+                .orElseThrow(() -> new EntityNotFoundException("Personagem não encontrado"));
+
+        return personagem.getItens_magicos().stream()
+                .filter(item -> item.getTipo_item() == ItemMagico.TipoItem.Amuleto)
+                .findFirst()
+                .orElseThrow(() -> new EntityNotFoundException("Amuleto não encontrado para este personagem"));
+    }
 
 }
 

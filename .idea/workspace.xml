@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01918ed4-8e2a-498c-89bc-22cdc9538b64" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/edu/EduAguiar/Dto/PersonagemDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/edu/EduAguiar/Controller/PersonagemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edu/EduAguiar/Controller/PersonagemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/edu/EduAguiar/Model/ItemMagico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edu/EduAguiar/Model/ItemMagico.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/edu/EduAguiar/Model/Personagem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edu/EduAguiar/Model/Personagem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/edu/EduAguiar/Service/PersonagemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edu/EduAguiar/Service/PersonagemService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/edu/EduAguiar/Controller/PersonagemController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/edu/EduAguiar/Controller/PersonagemController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/edu/EduAguiar/Model/Personagem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/edu/EduAguiar/Model/Personagem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/edu/EduAguiar/Service/PersonagemService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/edu/EduAguiar/Service/PersonagemService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,6 +90,7 @@
       <workItem from="1744237579937" duration="3473000" />
       <workItem from="1744341624156" duration="2992000" />
       <workItem from="1744344983547" duration="787000" />
+      <workItem from="1744384447638" duration="496000" />
     </task>
     <servers />
   </component>

@@ -1,6 +1,7 @@
 package com.edu.EduAguiar.Controller;
 
 import com.edu.EduAguiar.Dto.PersonagemDto;
+import com.edu.EduAguiar.Model.ItemMagico;
 import com.edu.EduAguiar.Model.Personagem;
 import com.edu.EduAguiar.Service.PersonagemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,6 +65,24 @@ public class PersonagemController {
 
         personagemService.adicionarItemMagico(idPersonagem, idItem);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/{id}/itens")
+    public ResponseEntity<List<ItemMagico>> listarItensPorPersonagem(@PathVariable int id) {
+        List<ItemMagico> itens = personagemService.listarItensPorPersonagem(id);
+        return ResponseEntity.ok(itens);
+    }
+
+    @DeleteMapping("/{idPersonagem}/itens/{idItem}")
+    public ResponseEntity<Void> removerItemDoPersonagem(@PathVariable int idPersonagem, @PathVariable int idItem) {
+        personagemService.removerItemDoPersonagem(idPersonagem, idItem);
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/{id}/amuleto")
+    public ResponseEntity<ItemMagico> buscarAmuleto(@PathVariable int id) {
+        ItemMagico amuleto = personagemService.buscarAmuleto(id);
+        return ResponseEntity.ok(amuleto);
     }
 
 
