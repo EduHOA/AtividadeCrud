@@ -5,14 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01918ed4-8e2a-498c-89bc-22cdc9538b64" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/edu/EduAguiar/Dto/PersonagemDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/edu/EduAguiar/Controller/ItemMagicoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edu/EduAguiar/Controller/ItemMagicoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/edu/EduAguiar/Controller/PersonagemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edu/EduAguiar/Controller/PersonagemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/edu/EduAguiar/Services/ItemMagicoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edu/EduAguiar/Service/ItemMagicoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/edu/EduAguiar/Services/PersonagemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edu/EduAguiar/Service/PersonagemService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/edu/EduAguiar/Model/ItemMagico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edu/EduAguiar/Model/ItemMagico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/edu/EduAguiar/Model/Personagem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edu/EduAguiar/Model/Personagem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/edu/EduAguiar/Service/PersonagemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edu/EduAguiar/Service/PersonagemService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/edu/EduAguiar/Controller/PersonagemController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/edu/EduAguiar/Controller/PersonagemController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/edu/EduAguiar/Model/Personagem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/edu/EduAguiar/Model/Personagem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/edu/EduAguiar/Repository/PersonagemRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/edu/EduAguiar/Repository/PersonagemRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/edu/EduAguiar/Service/PersonagemService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/edu/EduAguiar/Service/PersonagemService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -50,6 +50,7 @@
     &quot;Spring Boot.EduAguiarApplication.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/Edu/Downloads/EduAguiar/src/main/java/com/edu/EduAguiar&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Edu/Downloads/EduAguiar&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -93,6 +94,8 @@
       <workItem from="1744156184231" duration="437000" />
       <workItem from="1744156718660" duration="427000" />
       <workItem from="1744237579937" duration="3473000" />
+      <workItem from="1744341624156" duration="2992000" />
+      <workItem from="1744344983547" duration="787000" />
     </task>
     <servers />
   </component>

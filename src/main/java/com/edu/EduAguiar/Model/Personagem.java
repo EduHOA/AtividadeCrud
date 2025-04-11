@@ -1,9 +1,9 @@
 package com.edu.EduAguiar.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Personagem {
@@ -14,11 +14,31 @@ public class Personagem {
 
     private String nome;
     private String nome_aventureiro;
-    private String classe;
+
+    @OneToMany(mappedBy = "personagem", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ItemMagico> itens_magicos = new ArrayList<>();
+
+    public enum classe {Guerreiro,Mago,Arqueiro,Ladino,Bardo }
+
+    @Enumerated(EnumType.STRING)
+    private Personagem.classe classe;
+
+
     private int level;
     private int defesa;
     private int forca;
-    private String itens_magicos;
+
+    public int getForcaTotal() {
+        return forca + (itens_magicos != null
+                ? itens_magicos.stream().mapToInt(ItemMagico::getForca).sum()
+                : 0);
+    }
+
+    public int getDefesaTotal() {
+        return defesa + (itens_magicos != null
+                ? itens_magicos.stream().mapToInt(ItemMagico::getDefesa).sum()
+                : 0);
+    }
 
     public String getNome() {
         return nome;
@@ -36,11 +56,11 @@ public class Personagem {
         this.nome_aventureiro = nome_aventureiro;
     }
 
-    public String getClasse() {
+    public Personagem.classe getClasse() {
         return classe;
     }
 
-    public void setClasse(String classe) {
+    public void setClasse(Personagem.classe classe) {
         this.classe = classe;
     }
 
@@ -68,11 +88,11 @@ public class Personagem {
         this.forca = forca;
     }
 
-    public String getItens_magicos() {
+    public List<ItemMagico> getItens_magicos() {
         return itens_magicos;
     }
 
-    public void setItens_magicos(String itens_magicos) {
+    public void setItens_magicos(List<ItemMagico> itens_magicos) {
         this.itens_magicos = itens_magicos;
     }
 }

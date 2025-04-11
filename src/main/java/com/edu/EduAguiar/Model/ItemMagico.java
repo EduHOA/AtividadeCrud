@@ -1,9 +1,7 @@
 package com.edu.EduAguiar.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
 
 @Entity
 public class ItemMagico {
@@ -13,40 +11,76 @@ public class ItemMagico {
         private int id;
 
         private String nome;
-        private String tipo_item;
         private int forca;
         private int defesa;
 
-        public String getNome() {
-            return nome;
+    @ManyToOne
+    @JoinColumn(name = "personagem_id")
+    private Personagem personagem;
+
+    public enum TipoItem { Arma, Armadura, Amuleto }
+
+    @Enumerated(EnumType.STRING)
+    private TipoItem tipo_item;
+
+    @PrePersist
+    @PreUpdate
+    private void validarRegras() {
+
+        if (forca < 0 || forca > 10) {
+            throw new IllegalArgumentException("Força deve estar entre 0 e 10.");
+        }
+        if (defesa < 0 || defesa > 10) {
+            throw new IllegalArgumentException("Defesa deve estar entre 0 e 10.");
         }
 
-        public void setNome(String nome) {
-            this.nome = nome;
+        if (forca == 0 && defesa == 0) {
+            throw new IllegalArgumentException("Item não pode ter força e defesa zeradas.");
         }
 
-        public String getTipo_item() {
-            return tipo_item;
+
+        if (tipo_item == TipoItem.Arma && defesa != 0) {
+            throw new IllegalArgumentException("Armas devem ter defesa igual a zero.");
         }
 
-        public void setTipo_item(String tipo_item) {
-            this.tipo_item = tipo_item;
+        if (tipo_item == TipoItem.Armadura && forca != 0) {
+            throw new IllegalArgumentException("Armaduras devem ter força igual a zero.");
         }
 
-        public int getForca() {
-            return forca;
-        }
-
-        public void setForca(int forca) {
-            this.forca = forca;
-        }
-
-        public int getDefesa() {
-            return defesa;
-        }
-
-        public void setDefesa(int defesa) {
-            this.defesa = defesa;
-        }
+        // Amuleto pode ter os dois atributos, mas só um amuleto por personagem — validado em Personagem
     }
+
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public TipoItem getTipo_item() {
+        return tipo_item;
+    }
+
+    public void setTipo_item(TipoItem tipo_item) {
+        this.tipo_item = tipo_item;
+    }
+
+    public int getDefesa() {
+        return defesa;
+    }
+
+    public void setDefesa(int defesa) {
+        this.defesa = defesa;
+    }
+
+    public int getForca() {
+        return forca;
+    }
+
+    public void setForca(int forca) {
+        this.forca = forca;
+    }
+}
 
